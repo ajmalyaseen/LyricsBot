@@ -2,19 +2,17 @@ from pyrogram import Client, filters
 
 from ..db.models import *
 
-MESSAGE = ("<b>Lyrics</b> 🎵{banner}\n"
-           "\n"
-           "<i>Welcome to the bot,</i> {mention}<i>!</i>\n"
-           "With this bot you can search any song and find <code>info</code>, <code>lyrics</code>, <code>artists</code> and much more!\n")
+MESSAGE = ("Hey..{mention}\n"
+           "Welcome to the bot, With this bot you can search any song and find info, lyrics, artists and much more ! ")
 
 BANNER_URL = 'https://i.imgur.com/OO8vhWH.png'
 BANNER_ENTITY = f"<a href='{BANNER_URL}'>{config.INVISIBLE_CHAR}</a>"
 
-KEYBOARD = InlineKeyboardMarkup([[InlineKeyboardButton("Search 🔎", callback_data="search_song")],
-                                 [InlineKeyboardButton("History 🕑", callback_data="history"),
-                                  InlineKeyboardButton("Random 🎲", callback_data="random_song")],
-                                 [InlineKeyboardButton("Info 📦", callback_data="info"),
-                                  InlineKeyboardButton("Inline 🔗", switch_inline_query="")]])
+KEYBOARD = InlineKeyboardMarkup([[InlineKeyboardButton("Search Inline", switch_inline_query="")],
+                                 [InlineKeyboardButton("History", callback_data="history"),
+                                  InlineKeyboardButton("More", callback_data="random_song")],
+                                 [InlineKeyboardButton("Info", callback_data="info"),
+                                  InlineKeyboardButton("Help", callback_data="search_song")]])
 
 
 @Client.on_message(filters.command(['start', 'menu']))
